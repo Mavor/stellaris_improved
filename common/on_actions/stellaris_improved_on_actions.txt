@@ -1,0 +1,24 @@
+# Triggers when the game starts
+on_game_start = {
+	events = {
+		sa_on_action.1
+		sa_on_action.1000
+	}
+}
+
+# No scope, like on_game_start
+on_yearly_pulse = {
+	events = {
+		sa_on_action.1
+		sa_on_action.1001
+	}
+}
+
+# Planet has reached 0 health
+# This = Planet
+# From = Bombarder
+on_planet_zero_health = {
+	events = {
+		sa_on_action.100
+	}
+}

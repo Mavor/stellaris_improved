@@ -1,0 +1,286 @@
+#	Example:
+#
+#	example_effect = {
+#		add_energy = -100
+#	}
+#
+#
+#	In a script file:
+#
+#	effect = {
+#		example_effect = yes
+#	}
+#
+
+swarm_vanguard = {
+	
+	random_list = {
+		10 = {
+			create_leader = {
+				type = admiral
+				species = last_created
+				name = random
+				skill = 500
+				set_age = 3452
+				traits = {
+					trait = leader_trait_void_swimmer
+				}
+			}
+		}
+		10 = {
+			create_leader = {
+				type = admiral
+				species = last_created
+				name = random
+				skill = 500
+				set_age = 2967
+				traits = {
+					trait = leader_trait_void_swimmer
+				}
+			}
+		}
+		10 = {
+			create_leader = {
+				type = admiral
+				species = last_created
+				name = random
+				skill = 500
+				set_age = 4126
+				traits = {
+					trait = leader_trait_void_swimmer
+				}
+			}
+		}
+		10 = {
+			create_leader = {
+				type = admiral
+				species = last_created
+				name = random
+				skill = 500
+				set_age = 756
+				traits = {
+					trait = leader_trait_void_swimmer
+				}
+			}
+		}
+		10 = {
+			create_leader = {
+				type = admiral
+				species = last_created
+				name = random
+				skill = 500
+				set_age = 1007
+				traits = {
+					trait = leader_trait_void_swimmer
+				}
+			}
+		}
+		10 = {
+			create_leader = {
+				type = admiral
+				species = last_created
+				name = random
+				skill = 500
+				set_age = 2510
+				traits = {
+					trait = leader_trait_void_swimmer
+				}
+			}
+		}
+		10 = {
+			create_leader = {
+				type = admiral
+				species = last_created
+				name = random
+				skill = 500
+				set_age = 4831
+				traits = {
+					trait = leader_trait_void_swimmer
+				}
+			}
+		}
+		10 = {
+			create_leader = {
+				type = admiral
+				species = last_created
+				name = random
+				skill = 500
+				set_age = 3367
+				traits = {
+					trait = leader_trait_void_swimmer
+				}
+			}
+		}
+		10 = {
+			create_leader = {
+				type = admiral
+				species = last_created
+				name = random
+				skill = 500
+				set_age = 987
+				traits = {
+					trait = leader_trait_void_swimmer
+				}
+			}
+		}
+		10 = {
+			create_leader = {
+				type = admiral
+				species = last_created
+				name = random
+				skill = 500
+				set_age = 4517
+				traits = {
+					trait = leader_trait_void_swimmer
+				}
+			}
+		}
+	}
+
+	create_fleet = {
+		name = "NAME_Prethoryn_Vanguard"
+		effect = {
+			set_owner = PREV
+			create_ship = {
+				name = random
+				design = "Swarm Small"
+				graphical_culture = "swarm_01"
+			}
+			assign_leader = last_created_leader
+			while = {
+				count = 16
+				create_ship = {
+					name = random
+					design = "Swarm Small"
+					graphical_culture = "swarm_01"
+				}
+			}
+			set_location = {
+				target = PREVPREV
+				distance = 35
+				angle = random 
+			}
+			set_fleet_stance = aggressive
+			set_aggro_range = 500
+			set_aggro_range_measure_from = self
+		}
+	}
+}
+
+swarm_brood = {
+	random_list = {
+		75 = {
+			create_leader = {
+				type = admiral
+				species = event_target:prethoryn_species
+				name = random
+				skill = 500
+				set_age = 1125
+				traits = {
+					trait = leader_trait_hive_affinity
+				}
+			}
+		}
+		25 = {
+			create_leader = {
+				type = admiral
+				species = event_target:prethoryn_species
+				name = random
+				skill = 500
+				set_age = 1125
+				traits = {
+					trait = leader_trait_hive_affinity
+				}
+			}
+		}
+	}
+	create_fleet = {
+		name = "NAME_Prethoryn_Star_Brood"
+		effect = {
+			set_owner = event_target:prethoryn
+			create_ship = {
+				name = random
+				design = "Swarm Queen"
+				graphical_culture = "swarm_01"
+			}
+			assign_leader = last_created_leader
+			while = {
+				count = 15
+				create_ship = {
+					name = random
+					design = "Swarm Large"
+					graphical_culture = "swarm_01"
+				}
+			}
+			while = {
+				count = 4
+				create_ship = {
+					name = random
+					design = "Swarm Carrier"
+					graphical_culture = "swarm_01"
+				}
+			}
+			while = {
+				count = 28
+				create_ship = {
+					name = random
+					design = "Swarm Small"
+					graphical_culture = "swarm_01"
+				}
+			}
+			set_location = prevprev
+			set_fleet_stance = aggressive
+			set_aggro_range = 500
+			set_aggro_range_measure_from = self
+		}
+	}
+}
+
+
+shroud_energy_cost = {
+	if = {
+		limit = {
+			has_country_strategic_resource = {
+				type = sr_zro
+				amount = 0
+			}
+		}
+		add_energy = -5000
+	}
+	if = {
+		limit = {
+			has_country_strategic_resource = {
+				type = sr_zro
+				amount = 1
+			}
+		}
+		add_energy = -3000
+	}
+	if = {
+		limit = {
+			has_country_strategic_resource = {
+				type = sr_zro
+				amount = 2
+			}
+		}
+		add_energy = -2500
+	}
+	if = {
+		limit = {
+			has_country_strategic_resource = {
+				type = sr_zro
+				amount = 3
+			}
+		}
+		add_energy = -2000
+	}
+	if = {
+		limit = {
+			has_country_strategic_resource = {
+				type = sr_zro
+				amount > 3
+			}
+		}
+		add_energy = -1600
+	}
+}

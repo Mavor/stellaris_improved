@@ -1,0 +1,195 @@
+﻿	
+
+	NGameplay = {
+		
+		SHIP_SUBLIGHT_SPEED_MULT = 10.5 				# General speed multiplier for ship movement within solar systems
+		
+		BORDERING_DISTANCE = 50				# Within this distance we're considered to be neighbours	
+		RELEVANT_DISTANCE = 150				# Within this distance we're considered to be diplomatically relevant
+
+		FTL_RANGE_WARP 			= 65				# Base warp range
+		FTL_RANGE_WORMHOLE 		= 80				# Wormhole range
+		FTL_RANGE_JUMPDRIVE		= 200				# Jumpdrive range
+
+		LEADER_SKILL_CAP		= 5
+		
+		BORDER_BASE_RADIUS				= 18		# The base radius of the border
+		BORDER_NEW_COLONY_START			= 0.25		# Newly started colony's borders is modified by this goes up to 1x with progress
+		BORDER_POPULATION_MODIFIER		= 0.20		# The border population modifier
+		BORDER_HABITAT_MODIFIER 		= 0.50
+		
+		ETHOS_DISTRIBUTION_FACTOR 			= 0.60	# The higher this is the more evenly ethics will be distributed among playable empires
+
+		MONUMENTAL_UNDERTAKING_DAYS			= 430	# project time to consider it a monumental undertaking.
+		MODERATE_UNDERTAKING_DAYS			= 120	# project time to consider it a moderate undertaking.
+
+		GROUND_SUPPORT_ARMAGEDDON_DMG			= 0.70 # Multiplier to fortification damage
+
+		SPACEPORT_CONSTRUCTION_TIME				= 200	# Amount of days it takes to construct a spaceport.
+		SPACEPORT_UPGRADE_TIME					= 120	#	Time to upgrade a spaceport to the next level
+
+		#SHIP_COST_RESOURCE = "minerals" # resource to pay ships with
+
+		TECH_COST_MULT_NUM_COLONIES				= 0.04 # Each Planet adds +X% tech cost
+		TECH_COST_MULT_NUM_POPS					= 0.008 # Each non-free Pop adds +X% tech cost
+
+		## tradition cost = ( base_cost + ( ( cost_tradition * num_traditions )^traditions_exponential ) + cost_pop*num_pops ) * ( 1 + cost_planet*num_planets )
+		TRADITION_COST_TRADITION				= 6
+		TRADITION_COST_TRADITION_EXP			= 1.6
+
+		TRADITION_COST_MULT_NUM_COLONIES		= 0.30		# Each Planet adds +X% Tradition cost
+		TRADITION_COST_MULT_NUM_POPS			= 1			# Each Pop adds +X Tradition cost
+		TRADITION_COST_MULT_NUM_SLAVES			= 0.40		# Each Slave adds +X% to num pops mult
+		TRADITION_COST_MULT_NUM_SENTIENT_ROBOTS	= 0.80		# Each Sentient Robot adds +X% to num pops mult
+		TRADITION_COST_MULT_NUM_XENOS			= 0.80		# Each Xeno Pop adds +X% to num pops mult
+		TRADITION_COST_MULT_NUM_XENO_SLAVES		= 0.40		# Each Xeno Slave adds +X% to num pops mult
+
+		DOCKED_FLEET_MAINTENANCE_REDUCTION		= 0.35	# Docked fleets will have a lowered maintenance reduction of this amount
+
+		SECTOR_SUPPORT_RESOURCE_AMOUNT			= 200 	# How much resources each click will give the sector.
+
+		PEACE_OFFER_DECLINE_COST				= 50.0 # Cost for declining an offer the AI would accept.
+		
+		NAVY_SIZE_SPACEPORT_LEVEL							= { 2 4 7 13 20 30 } # Naval Capacity per spaceport level
+
+		WAR_SCORE_SHIP_KILL_MUL 			= 0.35		# Multiplier of warscore gained
+		WAR_SCORE_SHIP_KILL_WINNER_MUL		= 0.75		# Multiplier of warscore loss for the sinking of ships for the winner
+		WAR_SCORE_FLEET_COMBAT_WIN_BASE		= 0.25		# Base score for winning a fleet combat
+		
+	}
+
+	NCombat = {
+		COMBAT_BASE_DAYS_UNTIL_EMERGENCY_FTL 	= 50.0	# how many days a fleet should be in combat until they can emergency ftl
+	}
+
+	NShip = {
+	
+		ENERGY_MAINTENANCE_MUL				= 0.005		# Ship Maintenance Multiplier Percentage of the cost of the ship
+		MINERAL_MAINTENANCE_MUL				= 0.004		# Ship Maintenance Multiplier Percentage of the cost of the ship
+		
+		FALLEN_EMPIRE_MAINTENANCE_MULT		= 0.25
+		AWAKENED_FALLEN_EMPIRE_MAINTENANCE_MULT		= 0.7
+		AWAKENED_FALLEN_EMPIRE_NAVAL_CAPACITY 	= 1400
+		FALLEN_EMPIRE_NAVAL_CAPACITY 	= 800
+
+		COST_SECTION_MUL					= 0.12
+	    COST_SECTION_BASE					= 20.0
+	    COST_SECTION_ADD_SMALL_WEAPON_SLOT	= 3.0
+		COST_SECTION_ADD_MEDIUM_WEAPON_SLOT	= 6.0
+		COST_SECTION_ADD_LARGE_WEAPON_SLOT	= 9.0
+		COST_SECTION_ADD_TORPEDO_WEAPON_SLOT = 6.0
+		COST_SECTION_ADD_EXTRA_LARGE_WEAPON_SLOT	= 9.0
+		COST_SECTION_ADD_AUX_WEAPON_SLOT	= 2.5
+		COST_SECTION_ADD_SMALL_UTIL_SLOT	= 2.5
+		COST_SECTION_ADD_MEDIUM_UTIL_SLOT	= 9.0
+		COST_SECTION_ADD_LARGE_UTIL_SLOT	= 18.0
+		COST_SECTION_ADD_AUX_UTIL_SLOT		= 2.5
+
+		WARP_WINDUP 						= 0.8 	# Distance multiplier to warp windup in microupdates
+		WARP_WINDDOWN 						= 3.5 	# Distance multiplier to warp winddown in microupdates
+		WARP_WINDDOWN_OUTSIDE_BORDER		= 2.0	# How much more winddown time is there for systems which are 100% away from friendly territory
+		WARP_INTERSTELLAR_TRAVEL_SPEED 		= 0.55 # In micro updates ( 10/day )
+
+		HYPERLANE_WINDUP 					= 120	# In micro updates ( 10/day )
+		HYPERLANE_WINDDOWN					= 0	# In micro updates
+		HYPERLANE_WINDUP_OUTSIDE_BORDER		= 5.0	# How much more windup time is there for systems which are 100% away from friendly territory
+		JUMPDRIVE_WINDUP					= 120	# In micro updates ( 10/day )
+		JUMPDRIVE_WINDDOWN					= 50	# In micro updates ( 10/day )
+		HYPERDRIVE_INTERSTELLAR_TRAVEL_SPEED = 1.5 # In micro updates ( 10/day )
+		
+	}
+
+
+	NPop = {
+		
+		GROWTH_BASE							= 14	# Required growth for a pop to become fully grown.
+		GROWTH_INCREASE_PER_POP 			= 0.75	# Increased growth cost per pop planet [+ POP_INCREASE_PER_POP*(num_pop - 1)]
+		GROWTH_INCREASE_FACTOR 				= 0.9	# Increased growth factor [+ (num_pop - 1)^POP_INCREASE_FACTOR]
+		
+	}
+
+	NArmy = {
+		BASE_MAINTENANCE_FACTOR 		= 0.5			# global base maintenance cost
+		REINFORCE_MAINTENANCE_FACTOR 	= 1.50				# 50% increase of maintenance cost
+		MONTHLY_REINFORCE 				= 0.2				# Monthly health percentage reinforcement of armies
+
+	}
+
+	NEconomy = {
+		
+		SPACEPORT_UPGRADE_COSTS				= { 180.0 200.0 350.0 550.0 800.0 } # Mineral costs for upgrading the spaceport
+	}
+
+	NAI = {
+		MAX_SHIPS_BUILD_PER_WEEK = 30					
+		MAX_SHIPS_DISBAND_PER_WEEK = 10
+		
+		MIN_GIFT_SIZE = 25								# in opinion impact
+		MAX_GIFT_SIZE = 50	
+		AI_TRADE_INTERVAL = 5000						# the higher this is the less often the AI will offer trades
+		
+		MAX_TRUST = 120								# trust can never be more than this
+		MAX_TRUST_DEFENSIVE_PACT = 120					# trust can tick up to this if defensive pact
+		MAX_TRUST_ASSOCIATE = 120						# trust can tick up to this if federation associate
+		MAX_TRUST_NAP = 80								# trust can tick up to this if non-aggression pact
+		MAX_TRUST_MIN = 60						# trust can always tick up to at least this
+		
+	
+		SHARED_THREAT_MULT = 0.55					# How much does having a shared threat boost opinion?
+		SHARED_THREAT_MAX = 200	 	
+		THREAT_DISTANCE_FACTOR = 0.01				# The higher this is the larger the threat reduction from being far away
+		
+		COLONIZE_NON_ADJACENT = 1				# If enabled AI will colonize far away systems (will result in border gore)
+		COLONIZE_NON_ADJACENT_DIV = 3			# If colony is far away divide priority to colonize it by this
+	
+		AI_AGGRESSIVENESS_HIGH_MULT = 2.8
+		AI_AGGRESSIVENESS_BASE = 35			# Base chance AI will declare a war (multiplied by personality aggressiveness score)
+		AI_AGGRESSIVENESS_PROPAGATOR_BOXED_IN_MULT = 15	# When a warlike 'propagator' personality is boxed in aggression is multiplied by this value
+		AI_AGGRESSIVENESS_NO_COLONY_TARGET_MULT = 3 # When an AI has no immediate colony targets and at least MAX_PLANETS_FOR_BUDGET_FACTOR planets (but is not boxed in) aggression is multiplied by this value
+	
+		# Below are various acceptance factors for specific actions
+		FEDERATION_ACCEPTANCE_OTHER_ATTITUDE = -30
+		FEDERATION_ACCEPTANCE_DISTANCE_MULT = -0.06 # per 1 border distance
+		
+	
+		DEFENSIVE_PACT_ACCEPTANCE_OTHER_ATTITUDE = -40
+		DEFENSIVE_PACT_ACCEPTANCE_SHARED_THREAT = 0.75	# scales with actual threat
+		DEFENSIVE_PACT_ACCEPTANCE_DISTANCE_MULT = -0.05 # per 1 border distance
+	
+		NON_AGGRESSION_PACT_ACCEPTANCE_DISTANCE_MULT = -0.05 # per 1 border distance
+		
+		VASSALIZATION_ACCEPTANCE_DISTANCE_MULT = -0.25 # per 1 border distance
+		
+		OFFER_VASSALIZATION_ACCEPTANCE_OTHER_ATTITUDE = -100	
+		
+		BUILDING_BUDGET_FRACTION = 0.35 		# AI will spend this fraction of their income on buildings
+		ROBOT_BUDGET_FRACTION = 0.25			# AI will spend this fraction of their income on robots (transfered to stations & buildings if they don't use robots)
+
+		MINERAL_ROBOT_BUDGET_FRACTION = 0.15
+
+		ENERGY_ROBOT_BUDGET_FRACTION = 0.35 # AI will spend this fraction of their energy on robots (transfered to colonies if no robots)
+
+		ABS_MAX_MINERALS_STORED_ROBOTS = 400				# Max regardless of cap multiplier
+		MAX_MINERALS_STORED_ROBOTS = 250			# Minerals AI will store for robots when it needs more
+		
+		NAVAL_CAPACITY_BUDGET_MAX = 150		# At this naval capacity AI puts max budget into ships
+		
+		MAX_ARMY_MAINTENANCE = 40				# AI will not spend more than this amount on assault armies
+
+		COLONIZER_SHIPS_MAX = 2				# Maximum number of colonizer ships of AI
+		RESEARCH_SHIPS_MAX = 5					# Maximum number of research ships of AI
+
+		PEACE_OTHER_WARS_FACTOR = 20
+		PEACE_PURIFIER_FACTOR = -35 		# AI will be less willing to surrender to fanatical purifiers
+
+		START_WEAPON_TECH_AREA_MULT = 3		# Weapons within the same tech area as the start weapon will be weighted (multiplied) by this value when deciding tech strategies
+		
+		TRANSPORT_FLEET_SIZE = 16					# AI will have transport fleets of this size + 1
+
+		ENEMY_FLEET_POWER_MULT = 0.8			# AI will need the the fleet power of the enemy multiplied by this value to become offensive in an offensive war -- SI - modified to prevent stupidity of someone declaring war but sitting on their homeworld (??)
+		ENEMY_FLEET_POWER_HOME_SYSTEM_MULT = 0.7 # AI will need the fleet power of the enemy multiplied by this value to attack hostiles in own systems
+		PRIO_BASE_FRACTION = 1.2				# Prio base fraction for example if prio is assault arsenal fraction will be set to this value
+
+		MAX_CAPITAL_UPGRADE_BEFORE_PLANET_FULL = 2	# AI will not upgrade capital above this level before the planet is full (in pops)
+
+	}

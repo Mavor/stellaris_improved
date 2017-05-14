@@ -1,0 +1,174 @@
+namespace = sa_on_action
+
+#print_scope_trigger ##Note: if called with no scope will throw a bunch of warnings in the error log about "GetName" - PDX didn't code an exception
+#print_scope_effect
+
+##############################
+####  YEARLY PULSES ##########
+##############################
+##############################
+
+
+
+##### TENSION SYSTEM ######
+##Stellaris Improved - Game Start AI Empire Diversification
+event = {
+	# Entry point to yearly tension setting
+	id = sa_on_action.1000
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		every_country = { #Note: Every country includes guardians such as the enigmatic fortress...
+			limit = { is_ai = no }
+			#Settings for player diversification, if we need them
+			#print_scope_effect = yes
+		}
+
+		every_country = {
+			limit = { is_ai = yes }
+			#print_scope_effect = yes
+			
+		}
+		
+	}
+}
+
+
+##Stellaris Improved - Primary Tension Entry Point
+event = {
+	# Entry point to yearly tension setting
+	id = sa_on_action.1001
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		every_country = { #Note: Every country includes guardians such as the enigmatic fortress...
+			limit = { is_ai = no }
+			#print_scope_effect = yes
+		}
+
+		every_country = {
+			limit = { is_ai = yes }
+			#print_scope_effect = yes
+		}
+		
+	}
+}
+
+
+
+
+
+##### PLANETS ######
+#Yearly pulse to catch and upgrade all galaxy-wide gaia planets
+event = {
+	id = sa_on_action.1
+	hide_window = yes
+	is_triggered_only = yes
+
+
+	immediate = {
+
+		#log = "------------------------------"
+		#log = "- Entered Gaia update pulse event"
+	
+		every_planet = {
+			if = {
+				limit = {
+					AND = {
+						this = { is_planet_class = pc_gaia }
+						NOT = { has_modifier = "gaia_world_modifier" }
+					}
+				
+				}
+				
+
+				#log = "- Found a Gaia Planet"
+				#log = "- This: [This.GetName]"
+				add_modifier = {
+				    modifier = "gaia_world_modifier"
+				    days = -1 # -1 = never expires
+				}
+				 
+				 
+			}
+		}
+
+		every_planet = {
+			if = {
+				limit = {
+					AND = {
+						this = { is_planet_class = pc_ringworld_habitable }
+						NOT = { has_modifier = "ring_world_modifier" }
+					}
+				}
+				
+
+				#log = "- Found a Ring World"
+				#log = "- This: [This.GetName]"
+				 add_modifier = {
+				     modifier = "ring_world_modifier"
+				     days = -1 # -1 = never expires
+				 }
+				
+			}
+		}
+
+
+
+	}
+
+}
+
+
+
+
+
+
+
+###### CRISISES ###########
+#### Fix scourge so that they destroy colonies instead of occupying them like idiots ;)
+planet_event = {
+	id = sa_on_action.100
+	title = "crisis.1011.name"
+	desc = "crisis.1011.desc"
+	picture = GFX_evt_city_ruins
+	show_sound = event_ghost_town
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		FROM = {
+			OR = {
+				is_country_type = swarm
+			}
+		}
+	}
+	
+	immediate = {
+		add_threat = {
+			who = from
+			amount = 1 # scales to pops
+		}
+		while = {
+			limit = {
+				any_tile = {
+					has_blocker = tb_tribal_settlement
+				}
+			}
+			random_tile = {
+				limit = {
+					has_blocker = tb_tribal_settlement
+				}
+				remove_blocker = yes
+			}
+		}
+		destroy_colony = { keep_buildings = no }
+		log = "- Swarm: Destroyed a colony"
+	}
+	
+	option = {
+		name = crisis.1011.a
+	}
+}

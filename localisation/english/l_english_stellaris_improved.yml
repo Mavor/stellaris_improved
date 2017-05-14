@@ -1,0 +1,9 @@
+﻿l_english:
+ trait_trans_sentient:0 "Trans-Sentient"
+ trait_trans_sentient_desc:0 "§LHyper-dimensional bio-engineering taken to the utmost extreme has resulted in a truly post-humanoid lifeform...§!\n"
+ tech_repeatable_improved_navy_size:0 "Hyper-congrative Hierarchies"
+ tech_repeatable_improved_navy_size_desc:0 "§LUnderstanding of one-another enables our fleets to predict friendly movements both now and well into the future.§!\n"
+ building_planetary_emotion_link:0 "Planetary Emotion Link"
+ building_planetary_emotion_link_desc:0 "A mind-bogglingly complex planet-wide network linking inhabitants to one-another."
+
+ sm_planetary_assembly_yards:0 "Planetary Assembly Yards"
