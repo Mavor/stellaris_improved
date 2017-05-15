@@ -38,6 +38,21 @@ ap_engineered_evolution = {
 	
 	ai_weight = {
 		factor = 5
+		modifier = {
+			factor = 2
+			OR = {
+				has_ethic = ethic_authoritarian
+				has_ethic = ethic_egalitarian
+			}
+
+		}
+		modifier = {
+			factor = 5
+			OR = {
+				has_ethic = ethic_fanatic_authoritarian
+				has_ethic = ethic_fanatic_egalitarian
+			}
+		}
 	}
 }
 
@@ -74,7 +89,7 @@ ap_evolutionary_mastery = {
 	}
 	
 	ai_weight = {
-		factor = 25
+		factor = 50
 	}
 }
 
