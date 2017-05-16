@@ -392,10 +392,12 @@ ap_master_builders = {
 		modifier = {
 			factor = 3
 			has_ethic = ethic_pacifist
+			has_ethic = ethic_xenophobe
 		}
 		modifier = {
 			factor = 6
 			has_ethic = ethic_fanatic_pacifist
+			has_ethic = ethic_fanatic_xenophobe
 		}
 	}
 }
@@ -607,10 +609,12 @@ ap_voidborn = {
 		modifier = {
 			factor = 3
 			has_ethic = ethic_pacifist
+			has_ethic = ethic_xenophobe
 		}
 		modifier = {
 			factor = 4
 			has_ethic = ethic_fanatic_pacifist
+			has_ethic = ethic_fanatic_xenophobe
 		}
 	}
 }
@@ -646,10 +650,12 @@ ap_the_circle_of_life = {
 		modifier = {
 			factor = 2
 			has_ethic = ethic_pacifist
+			has_ethic = ethic_xenophobe
 		}
 		modifier = {
 			factor = 3
 			has_ethic = ethic_fanatic_pacifist
+			has_ethic = ethic_fanatic_xenophobe
 		}
 	}
 }

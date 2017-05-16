@@ -98,8 +98,8 @@ artificial_intelligence_policy = {
 		}
 		modifier = {
 			#species_leader_exp_gain = 0.25
-			all_technology_research_speed = 0.20 #Stellaris Improved - massive benefits for enslaving sentient AI... VERY dangerous
-			pop_robot_production_output = 0.35
+			all_technology_research_speed = 0.10 #Stellaris Improved - massive benefits for enslaving sentient AI... VERY dangerous
+			pop_robot_production_output = 0.25
 		}
 		
 		AI_weight = {
