@@ -1,4 +1,4 @@
-namespace = sa_on_action
+namespace = si_on_action
 
 #print_scope_trigger ##Note: if called with no scope will throw a bunch of warnings in the error log about "GetName" - PDX didn't code an exception
 #print_scope_effect
@@ -10,15 +10,10 @@ namespace = sa_on_action
 
 
 
-
-
-
-
-
 ##### PLANETS ######
 #Yearly pulse to catch and upgrade all galaxy-wide gaia planets
 event = {
-	id = sa_on_action.1
+	id = si_on_action.1
 	hide_window = yes
 	is_triggered_only = yes
 
@@ -85,7 +80,7 @@ event = {
 ###### CRISISES ###########
 #### Fix scourge so that they destroy colonies instead of occupying them like idiots ;)
 planet_event = {
-	id = sa_on_action.100
+	id = si_on_action.100
 	title = "crisis.1011.name"
 	desc = "crisis.1011.desc"
 	picture = GFX_evt_city_ruins

@@ -1,16 +1,14 @@
 # Triggers when the game starts
 on_game_start = {
 	events = {
-		sa_on_action.1
-		sa_on_action.1000
+		si_on_action.1
 	}
 }
 
 # No scope, like on_game_start
 on_yearly_pulse = {
 	events = {
-		sa_on_action.1
-		sa_on_action.1001
+		si_on_action.1
 	}
 }
 
@@ -19,6 +17,6 @@ on_yearly_pulse = {
 # From = Bombarder
 on_planet_zero_health = {
 	events = {
-		sa_on_action.100
+		si_on_action.100
 	}
 }
