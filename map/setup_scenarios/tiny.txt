@@ -8,7 +8,7 @@ setup_scenario = {
 	fallen_empire_default = 0
 	fallen_empire_max = 1
 	advanced_empire_default = 1
-	colonizable_planet_odds = 0.6
+	colonizable_planet_odds = 0.7
 	
 	cluster_count = {
 		method = one_every_x_empire
