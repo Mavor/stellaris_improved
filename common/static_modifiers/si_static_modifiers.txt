@@ -27,15 +27,15 @@ difficulty_hard_ai = {
 
 # For Fallen Empires
 difficulty_insane_special = {
-	ship_weapon_damage = 1.0
-	ship_hitpoints_mult = 1.0
-	ship_shield_hp_mult = 1.0
+	ship_weapon_damage = 0.75
+	ship_hitpoints_mult = 0.75
+	ship_shield_hp_mult = 0.75
 }
 
 difficulty_hard_special = {
-	ship_weapon_damage = 0.55
-	ship_hitpoints_mult = 0.75
-	ship_shield_hp_mult = 0.75
+	ship_weapon_damage = 0.50
+	ship_hitpoints_mult = 0.70
+	ship_shield_hp_mult = 0.70
 }
 
 ##########################################################################

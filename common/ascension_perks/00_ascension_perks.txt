@@ -9,6 +9,10 @@ ap_engineered_evolution = {
 	}
 	possible = {		
 		custom_tooltip = {
+					fail_text = "synthetic_empire_biological_ascension"
+			NOT = { has_trait = trait_mechanical }
+		}	
+		custom_tooltip = {
 			fail_text = "requires_ascension_perks_1"
 			num_ascension_perks > 0
 		}
@@ -65,6 +69,10 @@ ap_evolutionary_mastery = {
 	}
 	possible = {
 		custom_tooltip = {
+			fail_text = "synthetic_empire_biological_ascension"
+			NOT = { has_trait = trait_mechanical }
+		}
+		custom_tooltip = {
 			fail_text = "requires_ascension_perks_3"
 			num_ascension_perks > 2
 		}
@@ -104,7 +112,11 @@ ap_the_flesh_is_weak = {
 		country_robot_maintenance_mult = -0.20
 		country_robot_build_speed_mult = 0.25
 	}	
-	possible = {		
+	possible = {
+		custom_tooltip = {
+			fail_text = "synthetic_empire_synthetic_ascension"
+			NOT = { has_trait = trait_mechanical }
+		}
 		custom_tooltip = {
 			fail_text = "requires_ascension_perks_1"
 			num_ascension_perks > 0
@@ -150,6 +162,10 @@ ap_synthetic_evolution = {
 		country_robot_build_speed_mult = 0.25
 	}		
 	possible = {
+		custom_tooltip = {
+			fail_text = "synthetic_empire_synthetic_ascension"
+			NOT = { has_trait = trait_mechanical }
+		}
 		custom_tooltip = {
 			fail_text = "requires_ascension_perks_3"
 			num_ascension_perks > 2
@@ -197,6 +213,10 @@ ap_mind_over_matter = {
 	}
 	possible = {		
 		custom_tooltip = {
+			fail_text = "synthetic_empire_psionic_ascension"
+			NOT = { has_trait = trait_mechanical }
+		}
+		custom_tooltip = {
 			fail_text = "requires_ascension_perks_1"
 			num_ascension_perks > 0
 		}
@@ -237,6 +257,10 @@ ap_transcendence = {
 		}
 	}
 	possible = {
+		custom_tooltip = {
+			fail_text = "synthetic_empire_psionic_ascension"
+			NOT = { has_trait = trait_mechanical }
+		}
 		custom_tooltip = {
 			fail_text = "requires_ascension_perks_3"
 			num_ascension_perks > 2

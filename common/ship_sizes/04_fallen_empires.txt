@@ -56,7 +56,7 @@ massive_ship_fallen_empire = {
 	}
 	max_hitpoints = 35000
 	required_spaceport_level = 6
-	size_multiplier = 64
+	size_multiplier = 80
 	fleet_slot_size = 12
 	section_slots = { "mid" = { locator = "part1" } }
 	num_target_locators = 0
@@ -88,7 +88,7 @@ large_ship_fallen_empire = {
 	}
 	max_hitpoints = 8000
 	required_spaceport_level = 4
-	size_multiplier = 16
+	size_multiplier = 21
 	fleet_slot_size = 6
 	section_slots = { "mid" = { locator = "part1" } }
 	num_target_locators = 0
@@ -120,7 +120,7 @@ small_ship_fallen_empire = {
 	}
 	max_hitpoints = 3400
 	required_spaceport_level = 1
-	size_multiplier = 4
+	size_multiplier = 8
 	fleet_slot_size = 2
 	section_slots = { "mid" = { locator = "part1" } }
 	num_target_locators = 0

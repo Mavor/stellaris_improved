@@ -24,12 +24,19 @@ vassalize_country = {
 	
 	warscore_cost = {
 		base = 10
-		
+
 		modifier = {
 			factor = 2.0
-			NOT = { 
+			custom_tooltip = {
+				text = "DEMAND_CEDE_PLANET_NOT_MAIN_DEFENDER"
 				parameter:country = {
-					is_same_value = from 
+					NOR = {
+						is_same_value = from
+						AND = {
+							is_subject = yes
+							overlord = { is_same_value = from }
+						}
+					}
 				}
 			}
 		}		
@@ -64,18 +71,18 @@ vassalize_country = {
 		}		
 		
 		modifier = {
-			factor = 0.8
+			factor = 0.9
 			has_ethic = "ethic_militarist"
 		}
 	
 		modifier = {
-			factor = 0.7
+			factor = 0.8
 			has_ethic = "ethic_fanatic_militarist"
 		}	
 
 		# Ruler Trait - Warlike
 		modifier = {
-			factor = 0.85
+			factor = 0.95
 			custom_tooltip = {
 				text = "war_demand_trait_warlike"
 				exists = ruler
@@ -85,7 +92,7 @@ vassalize_country = {
 
 		# Ruler Trait - Expansionist
 		modifier = {
-			factor = 0.8
+			factor = 0.9
 			custom_tooltip = {
 				text = "war_demand_trait_expansionist"
 				exists = ruler
@@ -111,9 +118,9 @@ vassalize_country = {
 			}
 		}
 
-		# Tech - Domination
+		#STELLARIS IMPROVED
 		modifier = {
-			factor = 0.3
+			factor = 0.30
 			custom_tooltip = {
 				text = "war_demand_tech_galactic_campaigns"
 				has_technology = tech_galactic_domination
@@ -122,11 +129,17 @@ vassalize_country = {
 
 		# Tradition - Domination: adopt bonus
 		modifier = {
-			factor = 0.30
+			factor = 0.4
 			custom_tooltip = {
 				text = tr_domination_adopt
 				has_tradition = tr_domination_adopt
 			}
+		}
+		
+		# Awakened Fallen Empires
+		modifier = {
+			factor = 0.66
+			is_country_type = awakened_fallen_empire
 		}
 	}
 
@@ -141,11 +154,7 @@ vassalize_country = {
 		}
 		is_country_type = default
 		parameter:country = { 
-			OR = {
-				is_country_type = default
-				is_country_type = fallen_empire
-				is_country_type = awakened_fallen_empire
-			}
+			is_country_type = default
 		}
 		custom_tooltip = {
 			fail_text = "war_demand_vassalize_country_not_opponent"
@@ -245,7 +254,14 @@ vassalize_country = {
 			custom_tooltip = {
 				fail_text = "war_demand_vassalize_country_liberated"
 				war_demand_counter = {
-					type = liberated_or_vassalized
+					type = liberated
+					value < 1
+				}
+			}
+			custom_tooltip = {
+				fail_text = "war_demand_subjugation_twice"
+				war_demand_counter = {
+					type = subjugated
 					value < 1
 				}
 			}
@@ -297,6 +313,10 @@ vassalize_country = {
 	}
 	
 	counters = {
+		subjugated = {
+			context = parameter:country
+			value = { base = 1 }
+		}
 		liberated_or_vassalized = {
 			context = parameter:country
 			value = { base = 1 }
@@ -337,9 +357,16 @@ protectorate_country = {
 		
 		modifier = {
 			factor = 2.0
-			NOT = { 
+			custom_tooltip = {
+				text = "DEMAND_CEDE_PLANET_NOT_MAIN_DEFENDER"
 				parameter:country = {
-					is_same_value = from 
+					NOR = {
+						is_same_value = from
+						AND = {
+							is_subject = yes
+							overlord = { is_same_value = from }
+						}
+					}
 				}
 			}
 		}
@@ -375,18 +402,18 @@ protectorate_country = {
 		}		
 		
 		modifier = {
-			factor = 0.8
+			factor = 0.9
 			has_ethic = "ethic_militarist"
 		}
 	
 		modifier = {
-			factor = 0.7
+			factor = 0.8
 			has_ethic = "ethic_fanatic_militarist"
 		}
 
-		# Ruler Trait - Warlike
+	# Ruler Trait - Warlike
 		modifier = {
-			factor = 0.85
+			factor = 0.95
 			custom_tooltip = {
 				text = "war_demand_trait_warlike"
 				exists = ruler
@@ -396,7 +423,7 @@ protectorate_country = {
 
 		# Ruler Trait - Expansionist
 		modifier = {
-			factor = 0.8
+			factor = 0.9
 			custom_tooltip = {
 				text = "war_demand_trait_expansionist"
 				exists = ruler
@@ -422,9 +449,9 @@ protectorate_country = {
 			}
 		}
 
-		# Tech - Domination
+		#STELLARIS IMPROVED
 		modifier = {
-			factor = 0.3
+			factor = 0.30
 			custom_tooltip = {
 				text = "war_demand_tech_galactic_campaigns"
 				has_technology = tech_galactic_domination
@@ -433,12 +460,18 @@ protectorate_country = {
 
 		# Tradition - Domination: adopt bonus
 		modifier = {
-			factor = 0.3
+			factor = 0.4
 			custom_tooltip = {
 				text = tr_domination_adopt
 				has_tradition = tr_domination_adopt
 			}
 		}
+		
+		# Awakened Fallen Empires
+		modifier = {
+			factor = 0.66
+			is_country_type = awakened_fallen_empire
+		}	
 	}
 
 	potential = {
@@ -610,6 +643,10 @@ protectorate_country = {
 			context = parameter:country
 			value = { base = 1 }
 		}
+		subjugated = {
+			context = parameter:country
+			value = { base = 1 }
+		}
 	}
 	
 	ai_weight = {
@@ -648,6 +685,22 @@ make_tributary = {
 	
 	warscore_cost = {
 		base = 10
+		
+		modifier = {
+			factor = 2.0
+			custom_tooltip = {
+				text = "DEMAND_CEDE_PLANET_NOT_MAIN_DEFENDER"
+				parameter:country = {
+					NOR = {
+						is_same_value = from
+						AND = {
+							is_subject = yes
+							overlord = { is_same_value = from }
+						}
+					}
+				}
+			}
+		}
 
 		scaled_modifier = {
 			scope = parameter:country
@@ -681,13 +734,66 @@ make_tributary = {
 			has_ethic = "ethic_fanatic_militarist"
 		}
 
+		# Ruler Trait - Warlike
+		modifier = {
+			factor = 0.95
+			custom_tooltip = {
+				text = "war_demand_trait_warlike"
+				exists = ruler
+				ruler = { has_trait = trait_ruler_warlike }
+			}
+		}
+
+		# Ruler Trait - Expansionist
+		modifier = {
+			factor = 0.9
+			custom_tooltip = {
+				text = "war_demand_trait_expansionist"
+				exists = ruler
+				ruler = { has_trait = trait_ruler_expansionist }
+			}
+		}
+
+		# Tech - Interstellar Campaigns
+		modifier = {
+			factor = 0.6
+			custom_tooltip = {
+				text = "war_demand_tech_interstellar_campaigns"
+				has_technology = tech_interstellar_campaigns
+			}
+		}
+
+		# Tech - Galactic Campaigns
+		modifier = {
+			factor = 0.5
+			custom_tooltip = {
+				text = "war_demand_tech_galactic_campaigns"
+				has_technology = tech_galactic_campaigns
+			}
+		}
+
+		#STELLARIS IMPROVED
+		modifier = {
+			factor = 0.30
+			custom_tooltip = {
+				text = "war_demand_tech_galactic_campaigns"
+				has_technology = tech_galactic_domination
+			}
+		}
+
 		# Tradition - Domination: adopt bonus
 		modifier = {
-			factor = 0.3
+			factor = 0.4
 			custom_tooltip = {
 				text = tr_domination_adopt
 				has_tradition = tr_domination_adopt
 			}
+		}
+		
+		# Awakened Fallen Empires
+		modifier = {
+			factor = 0.66
+			is_country_type = awakened_fallen_empire
 		}
 	}
 
@@ -825,7 +931,14 @@ make_tributary = {
 			custom_tooltip = {
 				fail_text = "war_demand_vassalize_country_liberated"
 				war_demand_counter = {
-					type = liberated_or_vassalized
+					type = liberated
+					value < 1
+				}
+			}
+			custom_tooltip = {
+				fail_text = "war_demand_subjugation_twice"
+				war_demand_counter = {
+					type = subjugated
 					value < 1
 				}
 			}
@@ -879,12 +992,15 @@ make_tributary = {
 	}
 	
 	counters = {
+		subjugated = {
+			context = parameter:country
+			value = { base = 1 }
+		}
 		liberated_or_vassalized = {
 			context = parameter:country
 			value = { base = 1 }
 		}
-	}
-	
+	}	
 	ai_weight = {
 		base = 100
 		
@@ -915,7 +1031,23 @@ make_thrall = {
 	}
 	
 	warscore_cost = {
-		base = 5
+		base = 10
+		
+		modifier = {
+			factor = 2.0
+			custom_tooltip = {
+				text = "DEMAND_CEDE_PLANET_NOT_MAIN_DEFENDER"
+				parameter:country = {
+					NOR = {
+						is_same_value = from
+						AND = {
+							is_subject = yes
+							overlord = { is_same_value = from }
+						}
+					}
+				}
+			}
+		}	
 
 		scaled_modifier = {
 			scope = parameter:country
@@ -928,22 +1060,67 @@ make_thrall = {
 			add = 0.3
 			calc = pop_count
 		}
-		
+
+		# Ruler Trait - Warlike
 		modifier = {
-			factor = 0.15
-			OR = {
-				is_country_type = fallen_empire
-				is_country_type = awakened_fallen_empire
+			factor = 0.95
+			custom_tooltip = {
+				text = "war_demand_trait_warlike"
+				exists = ruler
+				ruler = { has_trait = trait_ruler_warlike }
+			}
+		}
+
+		# Ruler Trait - Expansionist
+		modifier = {
+			factor = 0.9
+			custom_tooltip = {
+				text = "war_demand_trait_expansionist"
+				exists = ruler
+				ruler = { has_trait = trait_ruler_expansionist }
+			}
+		}
+
+		# Tech - Interstellar Campaigns
+		modifier = {
+			factor = 0.6
+			custom_tooltip = {
+				text = "war_demand_tech_interstellar_campaigns"
+				has_technology = tech_interstellar_campaigns
+			}
+		}
+
+		# Tech - Galactic Campaigns
+		modifier = {
+			factor = 0.5
+			custom_tooltip = {
+				text = "war_demand_tech_galactic_campaigns"
+				has_technology = tech_galactic_campaigns
+			}
+		}
+
+		#STELLARIS IMPROVED
+		modifier = {
+			factor = 0.30
+			custom_tooltip = {
+				text = "war_demand_tech_galactic_campaigns"
+				has_technology = tech_galactic_domination
 			}
 		}
 
 		# Tradition - Domination: adopt bonus
 		modifier = {
-			factor = 0.3
+			factor = 0.4
 			custom_tooltip = {
 				text = tr_domination_adopt
 				has_tradition = tr_domination_adopt
 			}
+		}
+		
+		# Awakened Fallen Empires
+		modifier = {
+			factor = 0.66
+			is_country_type = awakened_fallen_empire
 		}
 	}
 
@@ -1078,7 +1255,14 @@ make_thrall = {
 			custom_tooltip = {
 				fail_text = "war_demand_vassalize_country_liberated"
 				war_demand_counter = {
-					type = liberated_or_vassalized
+					type = liberated
+					value < 1
+				}
+			}
+			custom_tooltip = {
+				fail_text = "war_demand_subjugation_twice"
+				war_demand_counter = {
+					type = subjugated
 					value < 1
 				}
 			}
@@ -1125,6 +1309,10 @@ make_thrall = {
 			context = parameter:country
 			value = { base = 1 }
 		}
+		subjugated = {
+			context = parameter:country
+			value = { base = 1 }
+		}
 	}
 	
 	ai_weight = {
@@ -1163,6 +1351,22 @@ make_dominion = {
 	
 	warscore_cost = {
 		base = 10
+		
+		modifier = {
+			factor = 2.0
+			custom_tooltip = {
+				text = "DEMAND_CEDE_PLANET_NOT_MAIN_DEFENDER"
+				parameter:country = {
+					NOR = {
+						is_same_value = from
+						AND = {
+							is_subject = yes
+							overlord = { is_same_value = from }
+						}
+					}
+				}
+			}
+		}
 
 		scaled_modifier = {
 			scope = parameter:country
@@ -1176,21 +1380,66 @@ make_dominion = {
 			calc = pop_count
 		}
 
+		# Ruler Trait - Warlike
 		modifier = {
-			factor = 0.15
-			OR = {
-				is_country_type = fallen_empire
-				is_country_type = awakened_fallen_empire
+			factor = 0.95
+			custom_tooltip = {
+				text = "war_demand_trait_warlike"
+				exists = ruler
+				ruler = { has_trait = trait_ruler_warlike }
+			}
+		}
+
+		# Ruler Trait - Expansionist
+		modifier = {
+			factor = 0.9
+			custom_tooltip = {
+				text = "war_demand_trait_expansionist"
+				exists = ruler
+				ruler = { has_trait = trait_ruler_expansionist }
+			}
+		}
+
+		# Tech - Interstellar Campaigns
+		modifier = {
+			factor = 0.6
+			custom_tooltip = {
+				text = "war_demand_tech_interstellar_campaigns"
+				has_technology = tech_interstellar_campaigns
+			}
+		}
+
+		# Tech - Galactic Campaigns
+		modifier = {
+			factor = 0.5
+			custom_tooltip = {
+				text = "war_demand_tech_galactic_campaigns"
+				has_technology = tech_galactic_campaigns
+			}
+		}
+
+		#STELLARIS IMPROVED
+		modifier = {
+			factor = 0.30
+			custom_tooltip = {
+				text = "war_demand_tech_galactic_campaigns"
+				has_technology = tech_galactic_domination
 			}
 		}
 
 		# Tradition - Domination: adopt bonus
 		modifier = {
-			factor = 0.3
+			factor = 0.4
 			custom_tooltip = {
 				text = tr_domination_adopt
 				has_tradition = tr_domination_adopt
 			}
+		}
+		
+		# Awakened Fallen Empires
+		modifier = {
+			factor = 0.66
+			is_country_type = awakened_fallen_empire
 		}
 	}
 
@@ -1325,7 +1574,14 @@ make_dominion = {
 			custom_tooltip = {
 				fail_text = "war_demand_vassalize_country_liberated"
 				war_demand_counter = {
-					type = liberated_or_vassalized
+					type = liberated
+					value < 1
+				}
+			}
+			custom_tooltip = {
+				fail_text = "war_demand_subjugation_twice"
+				war_demand_counter = {
+					type = subjugated
 					value < 1
 				}
 			}
@@ -1372,6 +1628,10 @@ make_dominion = {
 			context = parameter:country
 			value = { base = 1 }
 		}
+		subjugated = {
+			context = parameter:country
+			value = { base = 1 }
+		}
 	}
 	
 	ai_weight = {
@@ -1410,6 +1670,22 @@ make_signatory = {
 	
 	warscore_cost = {
 		base = 10
+		
+		modifier = {
+			factor = 2.0
+			custom_tooltip = {
+				text = "DEMAND_CEDE_PLANET_NOT_MAIN_DEFENDER"
+				parameter:country = {
+					NOR = {
+						is_same_value = from
+						AND = {
+							is_subject = yes
+							overlord = { is_same_value = from }
+						}
+					}
+				}
+			}
+		}	
 
 		scaled_modifier = {
 			scope = parameter:country
@@ -1423,21 +1699,66 @@ make_signatory = {
 			calc = pop_count
 		}
 
+		# Ruler Trait - Warlike
 		modifier = {
-			factor = 0.15
-			OR = {
-				is_country_type = fallen_empire
-				is_country_type = awakened_fallen_empire
+			factor = 0.95
+			custom_tooltip = {
+				text = "war_demand_trait_warlike"
+				exists = ruler
+				ruler = { has_trait = trait_ruler_warlike }
+			}
+		}
+
+		# Ruler Trait - Expansionist
+		modifier = {
+			factor = 0.9
+			custom_tooltip = {
+				text = "war_demand_trait_expansionist"
+				exists = ruler
+				ruler = { has_trait = trait_ruler_expansionist }
+			}
+		}
+
+		# Tech - Interstellar Campaigns
+		modifier = {
+			factor = 0.6
+			custom_tooltip = {
+				text = "war_demand_tech_interstellar_campaigns"
+				has_technology = tech_interstellar_campaigns
+			}
+		}
+
+		# Tech - Galactic Campaigns
+		modifier = {
+			factor = 0.5
+			custom_tooltip = {
+				text = "war_demand_tech_galactic_campaigns"
+				has_technology = tech_galactic_campaigns
+			}
+		}
+
+		#STELLARIS IMPROVED
+		modifier = {
+			factor = 0.30
+			custom_tooltip = {
+				text = "war_demand_tech_galactic_campaigns"
+				has_technology = tech_galactic_domination
 			}
 		}
 
 		# Tradition - Domination: adopt bonus
 		modifier = {
-			factor = 0.3
+			factor = 0.4
 			custom_tooltip = {
 				text = tr_domination_adopt
 				has_tradition = tr_domination_adopt
 			}
+		}
+		
+		# Awakened Fallen Empires
+		modifier = {
+			factor = 0.66
+			is_country_type = awakened_fallen_empire
 		}
 	}
 
@@ -1572,7 +1893,14 @@ make_signatory = {
 			custom_tooltip = {
 				fail_text = "war_demand_vassalize_country_liberated"
 				war_demand_counter = {
-					type = liberated_or_vassalized
+					type = liberated
+					value < 1
+				}
+			}
+			custom_tooltip = {
+				fail_text = "war_demand_subjugation_twice"
+				war_demand_counter = {
+					type = subjugated
 					value < 1
 				}
 			}
@@ -1619,6 +1947,10 @@ make_signatory = {
 			context = parameter:country
 			value = { base = 1 }
 		}
+		subjugated = {
+			context = parameter:country
+			value = { base = 1 }
+		}
 	}
 	
 	ai_weight = {
@@ -1657,6 +1989,22 @@ make_satellite = {
 	
 	warscore_cost = {
 		base = 10
+		
+		modifier = {
+			factor = 2.0
+			custom_tooltip = {
+				text = "DEMAND_CEDE_PLANET_NOT_MAIN_DEFENDER"
+				parameter:country = {
+					NOR = {
+						is_same_value = from
+						AND = {
+							is_subject = yes
+							overlord = { is_same_value = from }
+						}
+					}
+				}
+			}
+		}	
 
 		scaled_modifier = {
 			scope = parameter:country
@@ -1669,22 +2017,67 @@ make_satellite = {
 			add = 0.3
 			calc = pop_count
 		}
-		
+
+		# Ruler Trait - Warlike
 		modifier = {
-			factor = 0.15
-			OR = {
-				is_country_type = fallen_empire
-				is_country_type = awakened_fallen_empire
+			factor = 0.95
+			custom_tooltip = {
+				text = "war_demand_trait_warlike"
+				exists = ruler
+				ruler = { has_trait = trait_ruler_warlike }
+			}
+		}
+
+		# Ruler Trait - Expansionist
+		modifier = {
+			factor = 0.9
+			custom_tooltip = {
+				text = "war_demand_trait_expansionist"
+				exists = ruler
+				ruler = { has_trait = trait_ruler_expansionist }
+			}
+		}
+
+		# Tech - Interstellar Campaigns
+		modifier = {
+			factor = 0.6
+			custom_tooltip = {
+				text = "war_demand_tech_interstellar_campaigns"
+				has_technology = tech_interstellar_campaigns
+			}
+		}
+
+		# Tech - Galactic Campaigns
+		modifier = {
+			factor = 0.5
+			custom_tooltip = {
+				text = "war_demand_tech_galactic_campaigns"
+				has_technology = tech_galactic_campaigns
+			}
+		}
+
+		#STELLARIS IMPROVED
+		modifier = {
+			factor = 0.30
+			custom_tooltip = {
+				text = "war_demand_tech_galactic_campaigns"
+				has_technology = tech_galactic_domination
 			}
 		}
 
 		# Tradition - Domination: adopt bonus
 		modifier = {
-			factor = 0.3
+			factor = 0.4
 			custom_tooltip = {
 				text = tr_domination_adopt
 				has_tradition = tr_domination_adopt
 			}
+		}
+		
+		# Awakened Fallen Empires
+		modifier = {
+			factor = 0.66
+			is_country_type = awakened_fallen_empire
 		}
 	}
 
@@ -1819,7 +2212,14 @@ make_satellite = {
 			custom_tooltip = {
 				fail_text = "war_demand_vassalize_country_liberated"
 				war_demand_counter = {
-					type = liberated_or_vassalized
+					type = liberated
+					value < 1
+				}
+			}
+			custom_tooltip = {
+				fail_text = "war_demand_subjugation_twice"
+				war_demand_counter = {
+					type = subjugated
 					value < 1
 				}
 			}
@@ -1863,6 +2263,10 @@ make_satellite = {
 	
 	counters = {
 		liberated_or_vassalized = {
+			context = parameter:country
+			value = { base = 1 }
+		}
+		subjugated = {
 			context = parameter:country
 			value = { base = 1 }
 		}
